@@ -1,8 +1,47 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane layoutY="76.0" prefHeight="325.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <TextField fx:id="login_field" layoutX="277.0" layoutY="102.0" prefHeight="37.0" prefWidth="160.0" promptText="Логин" style="-fx-background-color: #2E3348; -fx-border-color: silever; -fx-background-radius: 5;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <PasswordField fx:id="password_field" layoutX="277.0" layoutY="163.0" prefHeight="37.0" prefWidth="160.0" promptText="Пароль" style="-fx-background-color: #2E3348; -fx-background-radius: 5;" />
+            <Button fx:id="authSignInButton" layoutX="302.0" layoutY="225.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #F39C63; -fx-background-radius: 5;" text="Войти" textFill="WHITE">
+               <font>
+                  <Font name="Mongolian Baiti" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="287.0" layoutY="34.0" prefHeight="37.0" prefWidth="140.0" style="-fx-background-color: #F39C63; -fx-background-radius: 5;" text="Авторизация" textFill="WHITE">
+               <font>
+                  <Font name="Mongolian Baiti" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="277.0" layoutY="14.0" text="FirstFX" textFill="WHITE">
+         <font>
+            <Font name="Mongolian Baiti" size="47.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginSignUpButton" layoutX="539.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="147.0" style="-fx-background-color: #F39C63; -fx-background-radius: 5;" text="Зарегистрироваться" textFill="WHITE">
+         <font>
+            <Font name="Mongolian Baiti" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
