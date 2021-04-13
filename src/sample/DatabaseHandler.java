@@ -51,24 +51,24 @@ public class DatabaseHandler {
         prSt.executeUpdate();
     }
 
-    public ResultSet getUser(User user) {
-
-        try {
-            Statement statement  = connection.createStatement ();
-            String query = "SELECT username, password FROM users " +
-                    " WHERE username='"+user.getUsername()+"' AND password='"+user.getPassword()+"' ";
-            ResultSet rs = statement.executeQuery(query);
-            while(rs.next()) {
-                String userName = rs.getString("username");
-                String passwordRS = rs.getString("password");
-            }
-
-            statement.close();
-            return rs;
-        }catch (Exception e){
-            //System.out.println(e.getMessage());
-            throw new RuntimeException("GET USER LOGIN and PASSWORD");
-        }
-    }
+//    public ResultSet getUser(User user) {
+//
+//        try {
+//            Statement statement  = connection.createStatement ();
+//            String query = "SELECT username, password FROM users " +
+//                    " WHERE username='"+user.getUsername()+"' AND password='"+user.getPassword()+"' ";
+//            ResultSet rs = statement.executeQuery(query);
+//            while(rs.next()) {
+//                String userName = rs.getString("username");
+//                String passwordRS = rs.getString("password");
+//            }
+//
+//            statement.close();
+//            return rs;
+//        }catch (Exception e){
+//            //System.out.println(e.getMessage());
+//            throw new RuntimeException("GET USER LOGIN and PASSWORD");
+//        }
+//    }
 
 }

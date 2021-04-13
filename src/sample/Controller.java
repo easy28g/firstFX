@@ -76,22 +76,26 @@ public class Controller {
         user.setUsername(loginText);
         user.setPassword(loginPassword);
         try {
-
-            ResultSet result;
-            result = dbHandler.getUser(user);
-
-            int counter = 0;
-
-            try{
-                while (result.next()){
-                    counter++;
-                }
-
-                    System.out.println("Success!");
-
-            }catch (SQLException e){
-                e.printStackTrace();
+            Statement statement = null;
+            dbHandler.ConnectionSQLite();
+            String query = "SELECT username, password FROM users" +
+                    " WHERE username='"+user.getUsername()+"' AND password='"+user.getPassword()+"'";
+            ResultSet rs = statement.executeQuery(query);
+            int count = 0;
+            while(rs.next()) {
+                String u = rs.getString("username");
+                String p = rs.getString("password");
+                count++;
             }
+            if(count>=1){
+                System.out.println("Succsesful");
+            }
+            if(count==0){
+                System.out.println("Такого чела нет");
+            }
+            rs.close();
+            statement.close();
+            //connection.close();
 
 
         } catch (Exception e) {
