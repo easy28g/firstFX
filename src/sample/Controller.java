@@ -2,6 +2,10 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,9 +43,12 @@ public class Controller {
             String loginText = login_field.getText().trim();
             String loginPassword = password_field.getText().trim();
 
-            if(!loginText.equals("")&& !loginPassword.equals("")){
+            if(loginText.equals("") && loginPassword.equals("")){
+                System.out.println("Login and Password is empty");
+
+            } else {
                 loginUser(loginText, loginPassword);
-            } else System.out.println("Login is empty");
+            }
         });
 
         loginSignUpButton.setOnAction(event -> {
@@ -63,7 +70,35 @@ public class Controller {
         });
     }
 
-    private void loginUser(String loginText, String loginPassword) {
+    public void loginUser(String loginText, String loginPassword) {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        User user = new User();
+        user.setUsername(loginText);
+        user.setPassword(loginPassword);
+        try {
+
+            ResultSet result;
+            result = dbHandler.getUser(user);
+
+            int counter = 0;
+
+            try{
+                while (result.next()){
+                    counter++;
+                }
+
+                    System.out.println("Success!");
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+
+
+        } catch (Exception e) {
+            //throw new RuntimeException("Ошибка в Controller в методе loginUser");
+            e.getStackTrace();
+        }
+
     }
 }
 

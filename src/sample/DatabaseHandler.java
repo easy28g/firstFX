@@ -1,13 +1,10 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
-public class DatabaseHandler extends Configs{
+public class DatabaseHandler {
 
-    Connection connection;
+    static Connection connection;
 
     public void ConnectionSQLite() {
         Connection connection = getConnection();
@@ -53,4 +50,25 @@ public class DatabaseHandler extends Configs{
         prSt.setString(6, user.getGender());
         prSt.executeUpdate();
     }
+
+    public ResultSet getUser(User user) {
+
+        try {
+            Statement statement  = connection.createStatement ();
+            String query = "SELECT username, password FROM users " +
+                    " WHERE username='"+user.getUsername()+"' AND password='"+user.getPassword()+"' ";
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()) {
+                String userName = rs.getString("username");
+                String passwordRS = rs.getString("password");
+            }
+
+            statement.close();
+            return rs;
+        }catch (Exception e){
+            //System.out.println(e.getMessage());
+            throw new RuntimeException("GET USER LOGIN and PASSWORD");
+        }
+    }
+
 }
